@@ -2,7 +2,8 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "Compares two configuration files and shows a difference.",
-  "main": "gendiff.js",
+  "main": "./src/gendiff.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +18,8 @@
   },
   "homepage": "https://github.com/Successful1991/frontend-project-lvl2#readme",
   "dependencies": {
-    "commander": "^7.1.0"
+    "commander": "^7.1.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "eslint": "^7.22.0",
