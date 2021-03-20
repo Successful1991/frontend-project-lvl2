@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "Compares two configuration files and shows a difference.",
-  "main": "./src/gendiff.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,9 +16,13 @@
   "bugs": {
     "url": "https://github.com/Successful1991/frontend-project-lvl2/issues"
   },
+  "bin": {
+    "gendiff": "index.js"
+  },
   "homepage": "https://github.com/Successful1991/frontend-project-lvl2#readme",
   "dependencies": {
     "commander": "^7.1.0",
+    "lodash": "^4.17.21",
     "path": "^0.12.7"
   },
   "devDependencies": {
