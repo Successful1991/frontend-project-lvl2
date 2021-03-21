@@ -24,3 +24,8 @@ jobs:
           make lint
         env:
           CI: true
+      - name: Run test
+        run: |
+          make test
+        env:
+          CI: true

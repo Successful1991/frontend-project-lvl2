@@ -1,9 +1,14 @@
 import _ from 'lodash';
-import Path from 'path';
+import path from 'path';
 import fs from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-function getFullPath(name) {
-  return Path.resolve(name);
+
+function getFullPath(filename) {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+  return path.join(__dirname, '..', '__fixtures__', filename);
 }
 
 function readFile(path) {

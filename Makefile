@@ -4,7 +4,7 @@ lint:
 	npx eslint .
 
 gendiff:
-	node index.js -f json __fixtures__/file1.json __fixtures__/file2.json
+	node index.js -f json file1.json file2.json
 publish:
 	npm publish --dry-run
 
