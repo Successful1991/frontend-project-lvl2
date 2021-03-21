@@ -30,13 +30,13 @@ function genDiffObj(file1, file2, keys) {
   const result = keys.map((key) => {
     switch (true) {
       case checkValuesMatch(file1, file2, key):
-        return `    ${key}:  ${file1[key]}`;
+        return `    ${key}: ${file1[key]}`;
       case (checkKey(file1, [key]) && checkKey(file2, [key])):
-        return [`  - ${key}:  ${file1[key]}`, `  + ${key}:  ${file2[key]}`].join('\n');
+        return [`  - ${key}: ${file1[key]}`, `  + ${key}: ${file2[key]}`].join('\n');
       case checkKey(file1, [key]):
-        return `  - ${key}:  ${file1[key]}`;
+        return `  - ${key}: ${file1[key]}`;
       case checkKey(file2, [key]):
-        return `  + ${key}:  ${file2[key]}`;
+        return `  + ${key}: ${file2[key]}`;
       default:
         return '';
     }
