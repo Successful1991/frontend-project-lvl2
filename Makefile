@@ -10,3 +10,6 @@ publish:
 
 test:
 	npm test
+
+test-coverage:
+	npm test --CODECLIMATE --coverage --coverageProvider=v8
