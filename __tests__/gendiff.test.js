@@ -11,5 +11,5 @@ test('generateDiff', () => {
   + verbose: true
 }`;
 
-  expect(genDiff('__fixtures__/file1.json', '__fixtures__/file2.json')).toBe(diff);
+  expect(genDiff('file1.json', 'file2.json')).toBe(diff);
 });
