@@ -5,19 +5,23 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx jest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Successful1991/frontend-project-lvl2.git"
   },
-  "author": "",
+  "author": "Artem Tsys",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Successful1991/frontend-project-lvl2/issues"
   },
   "bin": {
     "gendiff": "index.js"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {}
   },
   "homepage": "https://github.com/Successful1991/frontend-project-lvl2#readme",
   "dependencies": {
@@ -26,8 +30,15 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "@jest/globals": "^26.6.2",
+    "babel-jest": "^26.6.3",
     "eslint": "^7.22.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1"
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.3.2",
+    "jest": "^26.6.3",
+    "jest-cli": "^26.6.3"
   }
 }

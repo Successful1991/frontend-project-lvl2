@@ -1,13 +1,16 @@
 import _ from 'lodash';
-import Path from 'path';
+import path from 'path';
 import fs from 'fs';
+import { fileURLToPath } from 'url';
 
-function getFullPath(name) {
-  return Path.resolve(name);
+function getFullPath(fileName) {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  return path.join(__dirname, '..', '__fixtures__', fileName);
 }
 
-function readFile(path) {
-  return JSON.parse(fs.readFileSync(path, 'utf8'));
+function readFile(filePath) {
+  return JSON.parse(fs.readFileSync(filePath, 'utf8'));
 }
 
 function getSortKeys(value1, value2) {
@@ -30,13 +33,13 @@ function genDiffObj(file1, file2, keys) {
   const result = keys.map((key) => {
     switch (true) {
       case checkValuesMatch(file1, file2, key):
-        return `    ${key}:  ${file1[key]}`;
+        return `    ${key}: ${file1[key]}`;
       case (checkKey(file1, [key]) && checkKey(file2, [key])):
-        return [`  - ${key}:  ${file1[key]}`, `  + ${key}:  ${file2[key]}`].join('\n');
+        return [`  - ${key}: ${file1[key]}`, `  + ${key}: ${file2[key]}`].join('\n');
       case checkKey(file1, [key]):
-        return `  - ${key}:  ${file1[key]}`;
+        return `  - ${key}: ${file1[key]}`;
       case checkKey(file2, [key]):
-        return `  + ${key}:  ${file2[key]}`;
+        return `  + ${key}: ${file2[key]}`;
       default:
         return '';
     }
