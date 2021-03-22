@@ -29,3 +29,10 @@ jobs:
           make test
         env:
           CI: true
+      - name: CodeClimate
+        uses: paambaati/codeclimate-action@v2.7.4
+        env:
+          CODECLIMATE: ${{ secrets.CODECLIMATE }}
+        with:
+          coverageCommand: make test-coverage
+          debug: true
