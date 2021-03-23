@@ -63,7 +63,7 @@ function genDiff(path1, path2, genStyle = stylish, spacesCount = 2) {
               return [
                 genStyle(currentIndent, 'remove', key, iter(before[key], before[key], depth + 2)),
                 genStyle(currentIndent, 'add', key, after[key]),
-              ];
+              ].join('\n');
             default:
               if (after[key] === before[key]) {
                 return genStyle(currentIndent, '', key, after[key]);

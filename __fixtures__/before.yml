@@ -11,11 +11,11 @@ common:
     doge:
       wow: so much
 group1:
-    foo: bar
-    baz: bars
-    nest: str
+  foo: bar
+  baz: bars
+  nest: str
 group3:
-    deep:
-      id:
-        number: 45
-    fee: 100500
+  deep:
+    id:
+      number: 45
+  fee: 100500
