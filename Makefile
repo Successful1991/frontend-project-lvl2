@@ -4,12 +4,12 @@ lint:
 	npx eslint .
 
 gendiff:
-	node index.js -f json file1.json file2.json
+	node index.js -f json after.json before.json
 publish:
 	npm publish --dry-run
 
 test:
-	npm test
+	npm test --colors
 
 test-coverage:
-	npm test -- --coverage --coverageProvider=v8
+	npm test -- --coverage --coverageProvider=v8 --colors

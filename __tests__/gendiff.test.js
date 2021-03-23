@@ -1,15 +1,23 @@
 import { test, expect } from '@jest/globals';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
 import genDiff from '../src/gendiff.js';
 
-test('generateDiff', () => {
-  const diff = `{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}`;
+function getFullPath(fileName) {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  return path.join(__dirname, '..', '__fixtures__', fileName);
+}
 
-  expect(genDiff('file1.json', 'file2.json')).toBe(diff);
+function readFile(filePath) {
+  return fs.readFileSync(filePath, 'utf8');
+}
+
+const diff = readFile(getFullPath('result.txt'));
+
+test('generateDiff json', () => {
+  expect(genDiff('after.json', 'before.json')).toBe(diff);
+  expect(genDiff('after.yml', 'before.yml')).toBe(diff);
+  expect(genDiff('after.yml', 'before.json')).toBe(diff);
 });
