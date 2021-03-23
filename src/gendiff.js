@@ -89,7 +89,6 @@ function genDiff(path1, path2, genStyle = stylish, spacesCount = 2) {
     });
     return ['{', ...result, `${bracketIndent}}`].join('\n');
   };
-
   return iter(file1, file2, 1);
 }
 

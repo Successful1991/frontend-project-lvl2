@@ -4,7 +4,7 @@ lint:
 	npx eslint .
 
 gendiff:
-	node index.js -f json after.json before.json
+	node index.js after.json before.json
 publish:
 	npm publish --dry-run
 
