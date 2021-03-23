@@ -12,14 +12,18 @@ program
   .option('-h, --help', 'output extra debugging')
   .option('-f, --format [type]', 'output format')
   .action((name, options, command) => {
-    console.log(name, options, command);
+    console.log(name);
+    console.log(options);
+    console.log(command);
     if (program.opts().help) {
-      console.log(program.help('Compares two configuration files and shows a difference.'));
+      program.help('Compares two configuration files and shows a difference.');
     }
 
-    if (program.opts().format && program.args) {
+    if (program.args) {
       // console.log(program.args);
-      console.log(genDiff(...program.args));
+      // const { format } = program.opts();
+      const [file1, file2] = program.args;
+      console.log(genDiff(file1, file2));
     }
   });
 

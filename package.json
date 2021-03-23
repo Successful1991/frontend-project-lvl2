@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "npx jest --watch"
+    "test": "npx jest --colors"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
   "homepage": "https://github.com/Successful1991/frontend-project-lvl2#readme",
   "dependencies": {
     "commander": "^7.1.0",
+    "js-yaml": "^4.0.0",
     "lodash": "^4.17.21",
     "path": "^0.12.7"
   },
