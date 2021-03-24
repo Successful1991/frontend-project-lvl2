@@ -4,7 +4,7 @@ lint:
 	npx eslint .
 
 gendiff S?=stylish:
-	node index.js -f $(S) after.json before.json
+	node gendiff.js -f $(S) after.json before.json
 
 publish:
 	npm publish --dry-run

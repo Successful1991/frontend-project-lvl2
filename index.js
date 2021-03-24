@@ -10,8 +10,7 @@ program
   .option('-f, --format [type]', 'output format')
   .arguments('<filepath1>')
   .arguments('<filepath2>')
-  .action((name, options, command) => {
-    console.log(name, options, command);
+  .action(() => {
     if (program.opts().help) {
       program.help('Compares two configuration files and shows a difference.');
     }
