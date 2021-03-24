@@ -1,17 +1,17 @@
 #!/usr/bin/env node
-
-import commander from 'commander';
+import { Command } from 'commander';
 import genDiff from './src/gendiff.js';
 
-const program = commander;
-// const program = new Command();
+const program = new Command();
+
 program
+  .description('Compares two configuration files and shows a difference.')
+  // .option('-h, --help', 'output extra debugging')
+  .option('-f, --format [type]', 'output format')
   .arguments('<filepath1>')
   .arguments('<filepath2>')
-  .description('Compares two configuration files and shows a difference.')
-  .option('-h, --help', 'output extra debugging')
-  .option('-f, --format [type]', 'output format')
-  .action(() => {
+  .action((name, options, command) => {
+    console.log(name, options, command);
     if (program.opts().help) {
       program.help('Compares two configuration files and shows a difference.');
     }
@@ -20,11 +20,7 @@ program
       const { format: formatName } = program.opts();
       const [file1, file2] = program.args;
       const diff = genDiff(file1, file2, formatName);
-      return diff;
+      console.log(diff);
     }
-    return null;
-  });
-
-program.parse(process.argv);
-
-export default genDiff;
+  })
+  .parse(process.argv);
