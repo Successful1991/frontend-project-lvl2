@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "npm test"
+    "test": "npx jest --colors"
   },
   "repository": {
     "type": "git",

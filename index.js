@@ -1,10 +1,9 @@
 #!/usr/bin/env node
+
 import { Command } from 'commander/esm.mjs';
 import genDiff from './src/gendiff.js';
 
 const program = new Command();
-
-program.version('0.0.1');
 program
   .arguments('<filepath1>')
   .arguments('<filepath2>')
@@ -24,6 +23,6 @@ program
     }
   });
 
-program.parse();
+program.parse(process.argv);
 
 export default genDiff;
