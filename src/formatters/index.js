@@ -1,15 +1,17 @@
-import stylish from './stylish.js';
-import plain from './plain.js';
+import formatterStylish from './stylish.js';
+import formatterPlain from './plain.js';
+import formatterJson from './json.js';
 
 function getFormatHandler(name) {
-  console.log(name);
   switch (name) {
     case 'stylish':
-      return stylish;
+      return formatterStylish;
     case 'plain':
-      return plain;
+      return formatterPlain;
+    case 'json':
+      return formatterJson;
     default:
-      return stylish;
+      return formatterStylish;
   }
 }
 export default getFormatHandler;
