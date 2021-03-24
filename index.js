@@ -1,14 +1,19 @@
 import path from 'path';
 import fs from 'fs';
-import { fileURLToPath } from 'url';
+// import { fileURLToPath } from 'url';
 import getParser from './src/parsers.js';
 import buildAst from './src/buildAst.js';
 import getFormattingHandler from './src/formatters/index.js';
 
-function getFullPath(fileName) {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
-  return path.join(__dirname, fileName);
+function getFullPath(pathToFile) {
+  const workingDir = process.cwd();
+  const absPath = path.resolve(workingDir, pathToFile);
+  console.log('workingDir', workingDir, 'pathToFile', pathToFile);
+  console.log('absPath', absPath);
+  return absPath;
+  // const __filename = fileURLToPath(import.meta.url);
+  // const __dirname = path.dirname(__filename);
+  // return path.join(__dirname, fileName);
   // return path.join(__dirname, '__fixtures__', fileName);
 }
 
@@ -19,6 +24,7 @@ function readFile(filePath) {
 const getTypeFile = (filePath) => path.extname(filePath);
 
 function genDiff(path1, path2, formatName) {
+  console.log(path1);
   const parserPath1 = getParser(getTypeFile(path1));
   const parserPath2 = getParser(getTypeFile(path2));
 
