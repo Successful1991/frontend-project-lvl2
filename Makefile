@@ -3,8 +3,8 @@ install:
 lint:
 	npx eslint .
 
-gendiff:
-	node index.js after.json before.json
+gendiff S?=stylish:
+	node index.js -f $(S) after.json before.json
 publish:
 	npm publish --dry-run
 
