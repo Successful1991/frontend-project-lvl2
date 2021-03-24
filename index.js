@@ -19,10 +19,10 @@ program
       const { format: formatName } = program.opts();
       const [file1, file2] = program.args;
       const diff = genDiff(file1, file2, formatName);
-      console.log(diff);
+      return diff;
     }
   });
 
-program.parse(process.argv);
+program.parse();
 
 export default genDiff;
