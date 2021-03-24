@@ -21,8 +21,9 @@ program
       const diff = genDiff(file1, file2, formatName);
       return diff;
     }
+    return null;
   });
 
-program.parse();
+program.parse(process.argv);
 
 export default genDiff;
