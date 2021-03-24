@@ -1,6 +1,6 @@
 {
   "name": "@hexlet/code",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "Compares two configuration files and shows a difference.",
   "main": "index.js",
   "type": "module",
@@ -17,7 +17,7 @@
     "url": "https://github.com/Successful1991/frontend-project-lvl2/issues"
   },
   "bin": {
-    "gendiff": "src/gendiff.js"
+    "gendiff": "bin/gendiff.js"
   },
   "jest": {
     "testEnvironment": "node",

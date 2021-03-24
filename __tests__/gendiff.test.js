@@ -2,7 +2,7 @@ import { test, expect } from '@jest/globals';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
-import genDiff from '../src/gendiff.js';
+import index from '../index.js';
 
 function getFullPath(fileName) {
   const __filename = fileURLToPath(import.meta.url);
@@ -14,23 +14,23 @@ function readFile(filePath) {
   return fs.readFileSync(filePath, 'utf8');
 }
 
-test('genDiff stylish', () => {
+test('index stylish', () => {
   const diffStylish = readFile(getFullPath('resultStylish.txt'));
-  expect(genDiff('after.json', 'before.json', 'stylish')).toBe(diffStylish);
-  expect(genDiff('after.yml', 'before.yml', 'stylish')).toBe(diffStylish);
-  expect(genDiff('after.yml', 'before.json', 'stylish')).toBe(diffStylish);
+  expect(index('after.json', 'before.json', 'stylish')).toBe(diffStylish);
+  expect(index('after.yml', 'before.yml', 'stylish')).toBe(diffStylish);
+  expect(index('after.yml', 'before.json', 'stylish')).toBe(diffStylish);
 });
 
-test('genDiff plain', () => {
+test('index plain', () => {
   const diffPlain = readFile(getFullPath('resultPlain.txt'));
-  expect(genDiff('after.json', 'before.json', 'plain')).toBe(diffPlain);
-  expect(genDiff('after.yml', 'before.yml', 'plain')).toBe(diffPlain);
-  expect(genDiff('after.yml', 'before.json', 'plain')).toBe(diffPlain);
+  expect(index('after.json', 'before.json', 'plain')).toBe(diffPlain);
+  expect(index('after.yml', 'before.yml', 'plain')).toBe(diffPlain);
+  expect(index('after.yml', 'before.json', 'plain')).toBe(diffPlain);
 });
 
-test('genDiff json', () => {
+test('index json', () => {
   const diffJson = readFile(getFullPath('resultJson.txt'));
-  expect(genDiff('after.json', 'before.json', 'json')).toBe(diffJson);
-  expect(genDiff('after.yml', 'before.yml', 'json')).toBe(diffJson);
-  expect(genDiff('after.yml', 'before.json', 'json')).toBe(diffJson);
+  expect(index('after.json', 'before.json', 'json')).toBe(diffJson);
+  expect(index('after.yml', 'before.yml', 'json')).toBe(diffJson);
+  expect(index('after.yml', 'before.json', 'json')).toBe(diffJson);
 });
