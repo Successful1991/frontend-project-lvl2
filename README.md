@@ -16,3 +16,5 @@
 ##### presentation of work finding differences with output in plain style
 [![asciicast](https://asciinema.org/a/eFGXQZNDyux7Mg7icAhjhEXMS.svg)](https://asciinema.org/a/eFGXQZNDyux7Mg7icAhjhEXMS)
 
+##### presentation of work finding differences with output in JSON style
+[![asciicast](https://asciinema.org/a/qgcUOUvbNWATA6XVHkxGR6KN5.svg)](https://asciinema.org/a/qgcUOUvbNWATA6XVHkxGR6KN5)

@@ -14,17 +14,23 @@ function readFile(filePath) {
   return fs.readFileSync(filePath, 'utf8');
 }
 
-const diffStylish = readFile(getFullPath('resultStylish.txt'));
-const diffPlain = readFile(getFullPath('resultPlain.txt'));
-
 test('genDiff stylish', () => {
+  const diffStylish = readFile(getFullPath('resultStylish.txt'));
   expect(genDiff('after.json', 'before.json', 'stylish')).toBe(diffStylish);
   expect(genDiff('after.yml', 'before.yml', 'stylish')).toBe(diffStylish);
   expect(genDiff('after.yml', 'before.json', 'stylish')).toBe(diffStylish);
 });
 
 test('genDiff plain', () => {
+  const diffPlain = readFile(getFullPath('resultPlain.txt'));
   expect(genDiff('after.json', 'before.json', 'plain')).toBe(diffPlain);
   expect(genDiff('after.yml', 'before.yml', 'plain')).toBe(diffPlain);
   expect(genDiff('after.yml', 'before.json', 'plain')).toBe(diffPlain);
+});
+
+test('genDiff json', () => {
+  const diffJson = readFile(getFullPath('resultJson.txt'));
+  expect(genDiff('after.json', 'before.json', 'json')).toBe(diffJson);
+  expect(genDiff('after.yml', 'before.yml', 'json')).toBe(diffJson);
+  expect(genDiff('after.yml', 'before.json', 'json')).toBe(diffJson);
 });
