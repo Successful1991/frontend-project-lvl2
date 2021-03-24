@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { Command } from 'commander';
+import { Command } from 'commander/esm.mjs';
 import genDiff from './src/gendiff.js';
 
 const program = new Command();
@@ -24,4 +24,6 @@ program
     }
   });
 
-program.parse(process.argv);
+program.parse();
+
+export default genDiff;
