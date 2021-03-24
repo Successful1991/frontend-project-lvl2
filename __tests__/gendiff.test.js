@@ -1,16 +1,14 @@
 import { test, expect } from '@jest/globals';
 import path from 'path';
 import fs from 'fs';
-// import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'url';
 import index from '../index.js';
 
 function getFullPath(fileName) {
-  const workingDir = process.cwd();
-  const absPath = path.resolve(workingDir, fileName);
-  return absPath;
-  // const __filename = fileURLToPath(import.meta.url);
-  // const __dirname = path.dirname(__filename);
-  // return path.join(__dirname, '..', '__fixtures__', fileName);
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  // return path.join(__dirname, fileName);
+  return path.join(__dirname, '..', '__fixtures__', fileName);
 }
 
 function readFile(filePath) {
