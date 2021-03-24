@@ -11,19 +11,16 @@ program
   .description('Compares two configuration files and shows a difference.')
   .option('-h, --help', 'output extra debugging')
   .option('-f, --format [type]', 'output format')
-  .action((name, options, command) => {
-    console.log(name);
-    console.log(options);
-    console.log(command);
+  .action(() => {
     if (program.opts().help) {
       program.help('Compares two configuration files and shows a difference.');
     }
 
     if (program.args) {
-      // console.log(program.args);
-      // const { format } = program.opts();
+      const { format: formatName } = program.opts();
       const [file1, file2] = program.args;
-      console.log(genDiff(file1, file2));
+      const diff = genDiff(file1, file2, formatName);
+      console.log(diff);
     }
   });
 
