@@ -9,7 +9,7 @@ publish:
 	npm publish --dry-run
 
 test:
-	npx jest --colors
+	npm test
 
 test-coverage:
 	npm test -- --coverage --coverageProvider=v8 --colors
