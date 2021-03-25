@@ -40,7 +40,7 @@ function buildAst(file1, file2) {
           }
           return {
             ...createNode(nodeBefore, 'delete', key, iter.bind(null, nodeBefore, nodeBefore, newKeyPath)),
-            ...createNode(nodeAfter, 'added', key, iter.bind(null, nodeBefore, nodeAfter, newKeyPath)),
+            ...createNode(nodeAfter, 'added', key, iter.bind(null, nodeAfter, nodeAfter, newKeyPath)),
             ...{ type: 'update' },
           };
 
