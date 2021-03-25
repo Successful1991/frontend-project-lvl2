@@ -22,21 +22,21 @@ const beforeYml = getFullPath('before.yml');
 
 test('index stylish', () => {
   const diffStylish = readFile(getFullPath('resultStylish.txt'));
-  expect(genDiff(afterJson, beforeJson, 'stylish')).toBe(diffStylish);
-  expect(genDiff(afterYml, beforeYml, 'stylish')).toBe(diffStylish);
-  expect(genDiff(afterYml, beforeJson, 'stylish')).toBe(diffStylish);
+  expect(genDiff(beforeJson, afterJson, 'stylish')).toBe(diffStylish);
+  expect(genDiff(beforeYml, afterYml, 'stylish')).toBe(diffStylish);
+  expect(genDiff(beforeJson, afterYml, 'stylish')).toBe(diffStylish);
 });
 
 test('index plain', () => {
   const diffPlain = readFile(getFullPath('resultPlain.txt'));
-  expect(genDiff(afterJson, beforeJson, 'plain')).toBe(diffPlain);
-  expect(genDiff(afterYml, beforeYml, 'plain')).toBe(diffPlain);
-  expect(genDiff(afterYml, beforeJson, 'plain')).toBe(diffPlain);
+  expect(genDiff(beforeJson, afterJson, 'plain')).toBe(diffPlain);
+  expect(genDiff(beforeYml, afterYml, 'plain')).toBe(diffPlain);
+  expect(genDiff(beforeJson, afterYml, 'plain')).toBe(diffPlain);
 });
 
 test('index json', () => {
   const diffJson = readFile(getFullPath('resultJson.txt'));
-  expect(genDiff(afterJson, beforeJson, 'json')).toBe(diffJson);
-  expect(genDiff(afterYml, beforeYml, 'json')).toBe(diffJson);
-  expect(genDiff(afterYml, beforeJson, 'json')).toBe(diffJson);
+  expect(genDiff(beforeJson, afterJson, 'json')).toBe(diffJson);
+  expect(genDiff(beforeYml, afterYml, 'json')).toBe(diffJson);
+  expect(genDiff(beforeYml, afterJson, 'json')).toBe(diffJson);
 });
