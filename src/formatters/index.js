@@ -2,7 +2,7 @@ import formatterStylish from './stylish.js';
 import formatterPlain from './plain.js';
 import formatterJson from './json.js';
 
-function getFormatHandler(name) {
+function getFormattingHandler(name) {
   switch (name) {
     case 'stylish':
       return formatterStylish;
@@ -14,4 +14,4 @@ function getFormatHandler(name) {
       return formatterStylish;
   }
 }
-export default getFormatHandler;
+export default getFormattingHandler;
