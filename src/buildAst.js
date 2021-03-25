@@ -3,7 +3,7 @@ import _ from 'lodash';
 function getSortKeys(value1 = {}, value2 = {}) {
   const keys1 = Object.keys(value1);
   const keys2 = Object.keys(value2);
-  return _.union(keys1, keys2).sort();
+  return _(keys1).union(keys2).sortBy();
 }
 
 function createNode(name, type, values) {
