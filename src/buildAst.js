@@ -6,12 +6,20 @@ function getSortKeys(value1 = {}, value2 = {}) {
   return _(keys1).union(keys2).sortBy();
 }
 
-function createNode(name, type, values) {
-  return {
-    name,
-    type,
-    ...values,
-  };
+function createNode(value, type, name, createNodeChild) {
+  if (type === 'added') {
+    if (_.isObject(value)) {
+      return { name, type, children: createNodeChild() };
+    }
+    return { name, type, value };
+  }
+  if (type === 'delete') {
+    if (_.isObject(value)) {
+      return { name, type, oldChildren: createNodeChild() };
+    }
+    return { name, type, oldValue: value };
+  }
+  throw new Error(`No valid type: '${type}'`);
 }
 
 function buildAst(file1, file2) {
@@ -21,37 +29,26 @@ function buildAst(file1, file2) {
       const nodeBefore = before[key];
       const nodeAfter = after[key];
       const newKeyPath = [...keyPath, key];
-
       switch (true) {
         case (_.has(before, [key]) && _.has(after, [key])):
-          switch (true) {
-            case (_.isObject(nodeBefore) && _.isObject(nodeAfter)):
-              return createNode(key, 'no change', { children: iter(nodeBefore, nodeAfter, newKeyPath) });
-
-            case _.isObject(nodeBefore):
-              return createNode(key, 'update', { value: nodeAfter, oldChildren: iter(nodeBefore, nodeBefore, newKeyPath) });
-
-            case _.isObject(nodeAfter):
-              return createNode(key, 'update', { children: iter(nodeAfter, nodeAfter, newKeyPath), oldValue: nodeBefore });
-
-            case (Object.is(nodeBefore, nodeAfter)):
-              return createNode(key, 'no change', { value: nodeAfter, oldValue: nodeBefore });
-
-            default:
-              return createNode(key, 'update', { value: nodeAfter, oldValue: nodeBefore });
+          if (
+            (_.isObject(nodeBefore) && _.isObject(nodeAfter))
+            || Object.is(nodeBefore, nodeAfter)
+          ) {
+            const newNode = createNode(nodeAfter, 'added', key, iter.bind(null, nodeBefore, nodeAfter, newKeyPath));
+            return { ...newNode, ...{ type: 'no change' } };
           }
+          return {
+            ...createNode(nodeBefore, 'delete', key, iter.bind(null, nodeBefore, nodeBefore, newKeyPath)),
+            ...createNode(nodeAfter, 'added', key, iter.bind(null, nodeBefore, nodeAfter, newKeyPath)),
+            ...{ type: 'update' },
+          };
 
         case _.has(before, [key]):
-          if (_.isObject(nodeBefore)) {
-            return createNode(key, 'delete', { oldChildren: iter(nodeBefore, nodeBefore, newKeyPath) });
-          }
-          return createNode(key, 'delete', { oldValue: nodeBefore });
+          return createNode(nodeBefore, 'delete', key, iter.bind(null, nodeBefore, nodeBefore, newKeyPath));
 
         case _.has(after, [key]):
-          if (_.isObject(nodeAfter)) {
-            return createNode(key, 'added', { children: iter(nodeAfter, nodeAfter, newKeyPath) });
-          }
-          return createNode(key, 'added', { value: nodeAfter });
+          return createNode(nodeAfter, 'added', key, iter.bind(null, nodeAfter, nodeAfter, newKeyPath));
 
         default:
           throw new Error(`no data found in files by keys: '${newKeyPath.join('.')}'`);
