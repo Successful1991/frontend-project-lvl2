@@ -8,8 +8,6 @@ import getFormattingHandler from './src/formatters/index.js';
 function getFullPath(pathToFile) {
   const workingDir = process.cwd();
   const absPath = path.resolve(workingDir, pathToFile);
-  console.log('workingDir', workingDir, 'pathToFile', pathToFile);
-  console.log('absPath', absPath);
   return absPath;
   // const __filename = fileURLToPath(import.meta.url);
   // const __dirname = path.dirname(__filename);
@@ -24,7 +22,6 @@ function readFile(filePath) {
 const getTypeFile = (filePath) => path.extname(filePath);
 
 function genDiff(path1, path2, formatName) {
-  console.log(path1);
   const parserPath1 = getParser(getTypeFile(path1));
   const parserPath2 = getParser(getTypeFile(path2));
 
