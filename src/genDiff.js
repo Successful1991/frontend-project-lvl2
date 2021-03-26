@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import getParser from './parsers.js';
 import buildAst from './buildAst.js';
-import getFormattingHandler from './formatters/index.js';
+import getFormattingHandler from './formatters/formetters.js';
 
 function readFile(pathToFile) {
   const workingDir = process.cwd();

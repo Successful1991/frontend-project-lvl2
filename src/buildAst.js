@@ -19,7 +19,7 @@ function createNode(type, name, value1, value2, createChildrenNode) {
   return { name, type, [keyValue]: value1 };
 }
 
-const isEverObject = (...coll) => coll.every((val) => _.isObject(val));
+const isEverObject = (...rest) => rest.every((val) => _.isObject(val));
 
 function buildAst(file1, file2) {
   const iter = (data1, data2) => {

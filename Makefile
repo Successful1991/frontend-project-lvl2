@@ -4,7 +4,7 @@ lint:
 	npx eslint .
 
 gendiff S?=stylish:
-	node bin/gendiff.js -f $(S) __fixtures__/before.json __fixtures__/after.json
+	node bin/index.js -f $(S) __fixtures__/before.json __fixtures__/after.json
 
 publish:
 	npm publish --dry-run
