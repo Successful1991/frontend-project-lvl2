@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.4",
   "description": "Compares two configuration files and shows a difference.",
-  "main": "index.js",
+  "main": "src/genDiff.js",
   "type": "module",
   "scripts": {
     "test": "npx jest --colors"
@@ -17,7 +17,7 @@
     "url": "https://github.com/Successful1991/frontend-project-lvl2/issues"
   },
   "bin": {
-    "gendiff": "bin/gendiff.js"
+    "gendiff": "bin/index.js"
   },
   "jest": {
     "testEnvironment": "node",

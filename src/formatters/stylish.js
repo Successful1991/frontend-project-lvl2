@@ -4,9 +4,9 @@ function stylish(ast, spacesCount = 2) {
   const iter = (nodes, depth) => {
     const parseValue = (node, type = 'new') => {
       if (type === 'old') {
-        return _.has(node, 'oldValue') ? node.oldValue : iter(node.oldChildren, depth + 2);
+        return _.has(node, 'oldValue') ? node.oldValue : iter(node.oldChildren, depth + spacesCount);
       }
-      return _.has(node, 'value') ? node.value : iter(node.children, depth + 2);
+      return _.has(node, 'value') ? node.value : iter(node.children, depth + spacesCount);
     };
 
     const indentSize = depth * spacesCount;
