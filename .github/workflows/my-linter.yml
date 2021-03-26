@@ -18,7 +18,6 @@ jobs:
           make install
         env:
           CI: true
-
       - name: Run linter
         run: |
           make lint
@@ -29,6 +28,7 @@ jobs:
           make test
         env:
           CI: true
+
       - name: CodeClimate
         uses: paambaati/codeclimate-action@v2.7.4
         env:

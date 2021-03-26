@@ -1,8 +1,8 @@
 import path from 'path';
 import fs from 'fs';
-import getParser from './src/parsers.js';
-import buildAst from './src/buildAst.js';
-import getFormattingHandler from './src/formatters/index.js';
+import getParser from './parsers.js';
+import buildAst from './buildAst.js';
+import getFormattingHandler from './formatters/formetters.js';
 
 function readFile(pathToFile) {
   const workingDir = process.cwd();
@@ -19,10 +19,10 @@ function genDiff(path1, path2, formatName) {
   const file1 = readFile(path1);
   const file2 = readFile(path2);
 
-  const before = parserFile1(file1);
-  const after = parserFile2(file2);
+  const data1 = parserFile1(file1);
+  const data2 = parserFile2(file2);
 
-  const ast = buildAst(before, after);
+  const ast = buildAst(data1, data2);
   const formattingHandler = getFormattingHandler(formatName);
 
   return formattingHandler(ast);
