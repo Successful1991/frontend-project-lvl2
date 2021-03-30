@@ -1,7 +1,7 @@
 import program from 'commander';
-import genDiff from './genDiff.js';
+import genDiff from '../src/genDiff.js';
 
-function genDiffLib() {
+export default function runGenDiff() {
   program
     .description('Compares two configuration files and shows a difference.')
     .option('-f, --format [type]', 'output format')
@@ -12,5 +12,3 @@ function genDiffLib() {
 
   program.parse(process.argv);
 }
-
-export default genDiffLib;

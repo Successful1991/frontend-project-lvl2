@@ -25,6 +25,7 @@ test('stylish diff of different nested files', () => {
   expect(genDiff(file1Json, file2Json, 'stylish')).toBe(diffStylish);
   expect(genDiff(file1Yml, file2Yml, 'stylish')).toBe(diffStylish);
   expect(genDiff(file1Json, file2Yml, 'stylish')).toBe(diffStylish);
+  expect(genDiff(file1Yml, file2Json)).toBe(diffStylish);
 });
 
 test('plain diff of different nested files', () => {
@@ -34,7 +35,7 @@ test('plain diff of different nested files', () => {
   expect(genDiff(file1Json, file2Yml, 'plain')).toBe(diffPlain);
 });
 
-test('index json', () => {
+test('json diff of different nested files', () => {
   const diffJson = readFile(getFullPath('resultJson.txt'));
   expect(genDiff(file1Json, file2Json, 'json')).toBe(diffJson);
   expect(genDiff(file1Yml, file2Yml, 'json')).toBe(diffJson);

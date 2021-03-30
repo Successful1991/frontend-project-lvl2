@@ -13,7 +13,7 @@ const parseValue = (node, type = 'new') => {
   return _.isString(node.value) ? `'${node.value}'` : `${node.value}`;
 };
 
-function plain(ast) {
+export default function plain(dataTree) {
   const iter = (nodes, keys) => {
     const result = nodes.flatMap((node) => {
       const keysPath = [...keys, node.name];
@@ -33,7 +33,5 @@ function plain(ast) {
     });
     return result.filter((val) => val !== '').join('\n');
   };
-  return iter(ast, []);
+  return iter(dataTree, []);
 }
-
-export default plain;

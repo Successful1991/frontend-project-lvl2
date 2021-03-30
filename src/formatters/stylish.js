@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-function stylish(ast, spacesCount = 2) {
+export default function stylish(dataTree, spacesCount = 2) {
   const iter = (nodes, depth) => {
     const parseValue = (node, type = 'new') => {
       if (type === 'old') {
@@ -32,7 +32,5 @@ function stylish(ast, spacesCount = 2) {
     });
     return ['{', ...result, `${bracketIndent}}`].join('\n');
   };
-  return iter(ast, 1);
+  return iter(dataTree, 1);
 }
-
-export default stylish;

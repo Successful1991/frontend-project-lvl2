@@ -1,17 +1,15 @@
 import formatterStylish from './stylish.js';
 import formatterPlain from './plain.js';
-import formatterJson from './json.js';
 
-function getFormattingHandler(name) {
-  switch (name) {
+export default function getFormatter(formatName) {
+  switch (formatName) {
     case 'stylish':
       return formatterStylish;
     case 'plain':
       return formatterPlain;
     case 'json':
-      return formatterJson;
+      return JSON.stringify;
     default:
-      return formatterStylish;
+      throw new Error(`Unknown name format: '${formatName}'`);
   }
 }
-export default getFormattingHandler;
