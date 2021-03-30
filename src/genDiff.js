@@ -1,8 +1,8 @@
 import path from 'path';
 import fs from 'fs';
 import getParser from './parsers.js';
-import buildAst from './buildAst.js';
-import getFormattingHandler from './formatters/formetters.js';
+import buildDataTree from './buildDataTree.js';
+import getFormatter from './formatters/index.js';
 
 function readFile(pathToFile) {
   const workingDir = process.cwd();
@@ -10,22 +10,22 @@ function readFile(pathToFile) {
   return fs.readFileSync(absPath, 'utf8');
 }
 
-const getTypeFile = (filePath) => path.extname(filePath);
+const getFileType = (filePath) => path.extname(filePath).replace(/(\.)/, '');
 
-function genDiff(path1, path2, formatName) {
-  const parserFile1 = getParser(getTypeFile(path1));
-  const parserFile2 = getParser(getTypeFile(path2));
+function parse(value, data) {
+  const parserFile = getParser(getFileType(value));
+  return parserFile(data);
+}
 
+export default function genDiff(path1, path2, formatName = 'stylish') {
   const file1 = readFile(path1);
   const file2 = readFile(path2);
 
-  const data1 = parserFile1(file1);
-  const data2 = parserFile2(file2);
+  const data1 = parse(path1, file1);
+  const data2 = parse(path2, file2);
 
-  const ast = buildAst(data1, data2);
-  const formattingHandler = getFormattingHandler(formatName);
+  const dataTree = buildDataTree(data1, data2);
+  const formatter = getFormatter(formatName);
 
-  return formattingHandler(ast);
+  return formatter(dataTree);
 }
-
-export default genDiff;

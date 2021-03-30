@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import genDiffLib from '../src/genDiffLib.js';
+import runGenDiff from './runGenDiff.js';
 
-genDiffLib();
+runGenDiff();

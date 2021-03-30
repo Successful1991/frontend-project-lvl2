@@ -1,16 +1,12 @@
 import yaml from 'js-yaml';
 
-function getParser(type) {
+export default function getParser(type) {
   switch (type) {
-    case '':
+    case 'json':
       return JSON.parse;
-    case '.json':
-      return JSON.parse;
-    case '.yml':
+    case 'yml':
       return yaml.load;
     default:
-      return (date) => date;
+      return JSON.parse;
   }
 }
-
-export default getParser;
