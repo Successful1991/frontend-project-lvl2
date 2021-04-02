@@ -1,7 +1,9 @@
+#!/usr/bin/env node
+
 import program from 'commander';
 import genDiff from '../src/genDiff.js';
 
-export default function runGenDiff() {
+export default function gendiff() {
   program
     .description('Compares two configuration files and shows a difference.')
     .option('-f, --format [type]', 'output format')
