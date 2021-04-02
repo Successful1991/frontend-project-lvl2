@@ -26,6 +26,5 @@ export default function genDiff(path1, path2, formatName = 'stylish') {
 
   const dataTree = buildDataTree(data1, data2);
   const formatter = getFormatter(formatName);
-
   return formatter(dataTree);
 }

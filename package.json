@@ -17,7 +17,7 @@
     "url": "https://github.com/Successful1991/frontend-project-lvl2/issues"
   },
   "bin": {
-    "gendiff": "bin/index.js"
+    "gendiff": "bin/gendiff.js"
   },
   "jest": {
     "testEnvironment": "node",

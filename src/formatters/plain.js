@@ -1,16 +1,10 @@
 import _ from 'lodash';
 
-const parseValue = (node, type = 'new') => {
-  if (type === 'old') {
-    if (_.has(node, 'oldChildren')) {
-      return '[complex value]';
-    }
-    return _.isString(node.oldValue) ? `'${node.oldValue}'` : `${node.oldValue}`;
-  }
-  if (_.has(node, 'children')) {
+const parseValue = (node) => {
+  if (_.isObject(node)) {
     return '[complex value]';
   }
-  return _.isString(node.value) ? `'${node.value}'` : `${node.value}`;
+  return _.isString(node) ? `'${node}'` : `${node}`;
 };
 
 export default function plain(dataTree) {
@@ -19,13 +13,13 @@ export default function plain(dataTree) {
       const keysPath = [...keys, node.name];
       const objPath = keysPath.join('.');
       switch (node.type) {
-        case 'update':
-          return `Property '${objPath}' was updated. From ${parseValue(node, 'old')} to ${parseValue(node)}`;
+        case 'changed':
+          return `Property '${objPath}' was updated. From ${parseValue(node.value1)} to ${parseValue(node.value2)}`;
         case 'added':
-          return `Property '${objPath}' was added with value: ${parseValue(node)}`;
-        case 'delete':
+          return `Property '${objPath}' was added with value: ${parseValue(node.value)}`;
+        case 'deleted':
           return `Property '${objPath}' was removed`;
-        case 'no change':
+        case 'unchanged':
           return _.has(node, 'children') ? iter(node.children, keysPath) : '';
         default:
           throw new Error(`Unknown node state: '${node.type}'`);
