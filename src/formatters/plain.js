@@ -19,8 +19,10 @@ export default function plain(dataTree) {
           return `Property '${objPath}' was added with value: ${parseValue(node.value)}`;
         case 'deleted':
           return `Property '${objPath}' was removed`;
+        case 'nested':
+          return iter(node.children, keysPath);
         case 'unchanged':
-          return _.has(node, 'children') ? iter(node.children, keysPath) : '';
+          return '';
         default:
           throw new Error(`Unknown node state: '${node.type}'`);
       }
