@@ -23,7 +23,7 @@ export default function buildDataTree(file1, file2) {
       }
 
       if (areBothObjects) {
-        return { name: key, type: 'unchanged', children: iter(value1, value2) };
+        return { name: key, type: 'nested', children: iter(value1, value2) };
       }
 
       if (value1 !== value2) {

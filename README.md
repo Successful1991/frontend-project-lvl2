@@ -1,13 +1,13 @@
 # Getting Started with @hexlet/code
-@hexlet/code is a tool for identifying differences between files and generating a report in different styles
+"diff generator" is a tool for identifying differences between files and generating a report in different styles
 
 ## Installation and Usage 
-You can install @hexlet/code using npm:
+You can install "diff generator" using npm:
 ``` 
 npm install @hexlet/code 
 ```
 
-You can use @hexlet/code as a package:
+You can use "diff generator" as a package:
 ` gendiff --flag nameFormat <fileName1> <fileName2>`
 ```
 --flag: <-f or --format >
