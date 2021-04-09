@@ -8,8 +8,7 @@ function sortKeys(value1 = {}, value2 = {}) {
 
 export default function buildDataTree(file1, file2) {
   const iter = (data1, data2) => {
-    const keys = sortKeys(data1, data2);
-    const tree = keys.map((key) => {
+    const tree = sortKeys(data1, data2).map((key) => {
       const value1 = data1[key];
       const value2 = data2[key];
       const areBothObjects = (_.isObject(value1) && _.isObject(value2));
