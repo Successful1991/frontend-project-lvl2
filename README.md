@@ -1,4 +1,4 @@
-# Getting Started with @hexlet/code
+# Getting Started with "diff generator"
 "diff generator" is a tool for identifying differences between files and generating a report in different styles
 
 ## Installation and Usage 
